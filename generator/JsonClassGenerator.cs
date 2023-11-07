@@ -27,19 +27,19 @@ public class JsonSyntaxReceiver : ISyntaxContextReceiver {
       return;
     }
 
-    var jsonLdAttribute = classNode
+    var jsonSourceAttribute = classNode
       .GetAttributes()
       .FirstOrDefault(a => a.AttributeClass?.Name == "JsonSourceAttribute");
 
-    Log.Add($"{classNode.Name}: {jsonLdAttribute}");
+    Log.Add($"{classNode.Name}: {jsonSourceAttribute}");
 
-    if (jsonLdAttribute is not null) {
-      Log.Add($"  JSON: {jsonLdAttribute.ConstructorArguments[0].Value}");
+    if (jsonSourceAttribute is not null) {
+      Log.Add($"  JSON: {jsonSourceAttribute.ConstructorArguments[0].Value}");
 
       Models.Add((
         (classDec.Parent as FileScopedNamespaceDeclarationSyntax)?.Name.ToFullString() ?? "",
         classDec.Identifier.ToString(),
-        jsonLdAttribute.ConstructorArguments[0].Value?.ToString() ?? "" )
+        jsonSourceAttribute.ConstructorArguments[0].Value?.ToString() ?? "" )
       );
     }
   }
@@ -49,7 +49,7 @@ public class JsonSyntaxReceiver : ISyntaxContextReceiver {
 /// This is our generator that actually outputs the source code.
 /// </summary>
 [Generator]
-public class JsonLdGenerator : ISourceGenerator {
+public class JsonClassGenerator : ISourceGenerator {
   /// <summary>
   /// We hook up our receiver here.
   /// </summary>
