@@ -14,7 +14,7 @@ dotnet add package js2c.generator
 
 ## Motivation
 
-If you have a snippet of JSON and you'd like to quickly create a strongly typed class from it, js2c let's you do that quickly by simply decorating your class with an attribute:
+If you have a snippet of JSON and you'd like to quickly create a strongly typed class from it, js2c let's you do that quickly by simply decorating your class with an attribute and supplying a JSON snippet as a template:
 
 ```cs
 // 1️⃣ A partial class that is otherwise empty
@@ -50,6 +50,13 @@ var adam = Person.Parse("{ \"firstName\": \"Adam\", \"lastName\": \"Ng\" }");
 ```
 
 js2c simplifies defining classes from JSON by allowing you to simply paste a template into your source.
+
+Scenarios where you might find this useful:
+
+- Web scraping `__NEXT_DATA__` or other JSON chunks
+- Ad-hoc strongly typed API DTO classes from small snippets of JSON
+- Processing JSON event data in Lambda
+- Many more!
 
 ## Basic Types
 
