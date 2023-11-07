@@ -17,7 +17,8 @@ public partial class Person {
   // A JSON snippet which defines a "template"
   internal const string PersonJson = @"{
     ""firstName"" : """",
-    ""lastName"" : """"
+    ""lastName"" : """",
+    ""age"": 0
   }";
 }
 
@@ -28,12 +29,14 @@ public partial class Person {
   }
   [JsonPropertyName("firstName")] public string FirstName { get; set;} = "";
   [JsonPropertyName("lastName")] public string LastName { get; set;} = "";
+  [JsonPropertyName("age")] public decimal Age { get; set; }
 }
 
 // 3️⃣ Which you can use like this
 var person = new Person {
   FirstName = "Stanley",
-  LastName = "Banks"
+  LastName = "Banks",
+  Age = 30m
 }
 
 // Or like this:
@@ -41,6 +44,14 @@ var adam = Person.Parse("{ \"firstName\": \"Adam\", \"lastName\": \"Ng\" }");
 ```
 
 js2c simplifies defining classes from JSON by allowing you to simply paste a template into your source.
+
+## Basic Types
+
+- JSON Strings are mapped to `string`
+- JSON Booleans are mapped to `bool`
+- JSON Numbers are mapped to `decimal`
+- JSON Arrays are mapped to `Array<T>`
+- JSON Objects are mapped to `class`
 
 ## Complex Types
 
