@@ -6,6 +6,12 @@ This project was inspired by parsing JSON+LD from various websites which all use
 
 However, it can be used with any JSON snippet.
 
+To use:
+
+```
+dotnet add package js2c.generator
+```
+
 ## Motivation
 
 If you have a snippet of JSON and you'd like to quickly create a strongly typed class from it, js2c let's you do that quickly by simply decorating your class with an attribute:
