@@ -27,7 +27,7 @@
 
   <ItemGroup>
     <ProjectReference
-      Include="..\generator\Js2c.Generator.csproj"
+      Include="..\generator\js2c.generator.csproj"
       OutputItemType="Analyzer"
       ReferenceOutputAssembly="false" />
   </ItemGroup>
